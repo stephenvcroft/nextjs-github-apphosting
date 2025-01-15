@@ -1,4 +1,6 @@
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: "Catalog Builder",
@@ -10,6 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
+        <ToastContainer />
       </body>
     </html>
   );
