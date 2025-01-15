@@ -279,30 +279,28 @@ const Page = ({ params }) => {
 
   // Genrate Pdf
   const generatePdf = async () => {
-    alert("Call API");
+    const week = "01";
+    const sheet = "01";
+    const theme = "baby";
 
-    // const week = "01";
-    // const sheet = "01";
-    // const theme = "baby";
+    try {
+      const response = await fetch("/api/generate-pdf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ week, sheet, theme, code }),
+      });
 
-    // try {
-    //   const response = await fetch("/api/generate-pdf", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ week, sheet, theme, code }),
-    //   });
-
-    //   if (response.ok) {
-    //     const blob = await response.blob(); // Get the binary response as a Blob
-    //     const url = URL.createObjectURL(blob); // Create an object URL from the blob
-    //     window.open(url, "_blank"); // Open the PDF in a new window
-    //   } else {
-    //     const errorData = await response.text();
-    //     console.error("Error:", errorData);
-    //   }
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
+      if (response.ok) {
+        const blob = await response.blob(); // Get the binary response as a Blob
+        const url = URL.createObjectURL(blob); // Create an object URL from the blob
+        window.open(url, "_blank"); // Open the PDF in a new window
+      } else {
+        const errorData = await response.text();
+        console.error("Error:", errorData);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
