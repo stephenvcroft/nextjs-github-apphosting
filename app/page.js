@@ -31,6 +31,13 @@ const Page = () => {
           );
         })}
       </div>
+      {/* TEST SERVER ACTION */}
+      <Link
+        href="test-server-action"
+        className="mt-4 px-4 py-1 flex justify-center rounded-xl font-medium text-sm bg-blue-500 text-white opacity-80 hover:opacity-100"
+      >
+        app/test-server-action
+      </Link>
     </div>
   );
 };
